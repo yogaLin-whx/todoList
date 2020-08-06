@@ -6,9 +6,11 @@ import com.thoughtworks.springbootemployee.service.serviceImpl.ItemServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@SpringBootTest
 public class ItemTest {
 
     @Autowired
@@ -27,6 +29,7 @@ public class ItemTest {
         //given
         Item item = new Item();
         item.setContent("This is a test");
+        item.setStatus(false);
 
         //when
         Item itemResult = itemService.save(item);

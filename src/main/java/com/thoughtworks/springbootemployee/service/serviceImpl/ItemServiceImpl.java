@@ -2,9 +2,12 @@ package com.thoughtworks.springbootemployee.service.serviceImpl;
 
 import com.thoughtworks.springbootemployee.entity.Item;
 import com.thoughtworks.springbootemployee.repository.ItemRepository;
+import com.thoughtworks.springbootemployee.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class ItemServiceImpl {
+@Service
+public class ItemServiceImpl implements ItemService {
 
     @Autowired
     ItemRepository  itemRepository;
