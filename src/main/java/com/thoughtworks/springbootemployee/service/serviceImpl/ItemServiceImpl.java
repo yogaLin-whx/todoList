@@ -15,4 +15,8 @@ public class ItemServiceImpl implements ItemService {
     public Item save(Item item) {
         return  itemRepository.save(item);
     }
+
+    public void deleteById(int id) {
+        itemRepository.deleteById(id);
+    }
 }

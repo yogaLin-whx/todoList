@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class ItemTest {
@@ -36,5 +37,19 @@ public class ItemTest {
 
         //then
         assertNotNull(itemResult);
+    }
+
+    @Test
+    void  should_return_null_when_delete_item_list_given_exist_item(){
+        //given
+        Item item = new Item();
+        item = itemRepository.save(item);
+
+        //when
+        itemService.deleteById(item.getId());
+        Item existItem = itemRepository.findById(item.getId()).orElse(null);
+
+        //then
+        assertNull(existItem);
     }
 }
