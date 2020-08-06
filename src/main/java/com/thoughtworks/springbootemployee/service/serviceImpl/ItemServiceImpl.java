@@ -34,18 +34,20 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void updateById(int id, ItemRequest itemRequest) {
         Item item = itemRepository.findById(id).orElse(null);
-        BeanUtils.copyProperties(itemRequest, item);
-        itemRepository.save(item);
+        if (item != null) {
+            item.setStatus(itemRequest.isStatus());
+            itemRepository.save(item);
+        }
     }
 
     @Override
-    public List<ItemResponse> getItems() {
-        List<Item> items = itemRepository.findAll();
-        return items.stream().map(item -> {
-            ItemResponse itemResponse = new ItemResponse();
-            BeanUtils.copyProperties(item, itemResponse);
-            return itemResponse;
-        }).collect(Collectors.toList());
+    public List<Item> getItems() {
+         return  itemRepository.findAll();
+//        return items.stream().map(item -> {
+//            ItemResponse itemResponse = new ItemResponse();
+//            BeanUtils.copyProperties(item, itemResponse);
+//            return itemResponse;
+//        }).collect(Collectors.toList());
     }
 
     @Override

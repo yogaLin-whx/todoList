@@ -3,6 +3,7 @@ package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.dto.ItemRequest;
 import com.thoughtworks.springbootemployee.dto.ItemResponse;
+import com.thoughtworks.springbootemployee.entity.Item;
 import com.thoughtworks.springbootemployee.service.serviceImpl.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class ItemController {
 
 
     @GetMapping
-    private List<ItemResponse> getItems() {
+    private List<Item> getItems() {
         return itemService.getItems();
     }
 
