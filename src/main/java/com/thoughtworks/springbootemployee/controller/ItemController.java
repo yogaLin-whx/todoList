@@ -22,6 +22,11 @@ public class ItemController {
         return itemService.getItems();
     }
 
+    @GetMapping("/{id}")
+    private ItemResponse getItemById(@PathVariable int id){
+        return itemService.findById(id);
+    }
+
     @PostMapping
     private void addItem(@RequestBody Item item) {
         itemService.addItem(item);
