@@ -80,12 +80,15 @@ public class ItemTest {
         item.setContent("This is a test");
         item = itemRepository.save(item);
         item.setContent("update");
+        ItemRequest itemRequest = new ItemRequest();
+        BeanUtils.copyProperties(item, itemRequest);
 
         //when
-        Item itemResult = itemService.updateById(item.getId(), item);
+        ItemResponse itemResponse = itemService.updateById(item.getId(), itemRequest);
 
         //then
-        assertEquals(item, itemResult);
+        assertEquals(item.getContent(), itemResponse.getContent());
+        assertEquals(item.isStatus(), itemResponse.isStatus());
     }
 
     @Test

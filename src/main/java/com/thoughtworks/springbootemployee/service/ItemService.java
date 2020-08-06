@@ -14,7 +14,7 @@ public interface ItemService {
 
     ItemResponse findById(int id);
 
-    Item updateById(int id, Item item);
+    ItemResponse updateById(int id, ItemRequest itemRequest);
 
      List<Item> getItems();
 
