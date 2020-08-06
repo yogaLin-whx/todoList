@@ -18,7 +18,7 @@ public class ItemController {
 
 
     @GetMapping
-    private List<ItemResponse> getItem() {
+    private List<ItemResponse> getItems() {
         return itemService.getItems();
     }
 
