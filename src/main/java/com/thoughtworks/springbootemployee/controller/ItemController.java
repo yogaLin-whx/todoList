@@ -32,4 +32,9 @@ public class ItemController {
         itemService.addItem(itemRequest);
     }
 
+    @DeleteMapping("/{id}")
+    private void  deleteItemById(@PathVariable int id){
+        itemService.deleteById(id);
+    }
+
 }
