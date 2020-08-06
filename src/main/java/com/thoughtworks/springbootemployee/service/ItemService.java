@@ -16,7 +16,7 @@ public interface ItemService {
 
     ItemResponse updateById(int id, ItemRequest itemRequest);
 
-     List<Item> getItems();
+    List<ItemResponse> getItems();
 
-     void addItem(Item item);
+    void addItem(Item item);
 }

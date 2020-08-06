@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -51,8 +52,13 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> getItems() {
-        return itemRepository.findAll();
+    public List<ItemResponse> getItems() {
+        List<Item> items = itemRepository.findAll();
+        return items.stream().map(item -> {
+            ItemResponse  itemResponse = new ItemResponse();
+            BeanUtils.copyProperties(item,itemResponse);
+            return itemResponse;
+        }).collect(Collectors.toList());
     }
 
     @Override

@@ -1,11 +1,10 @@
 package com.thoughtworks.springbootemployee.controller;
 
 
+import com.thoughtworks.springbootemployee.dto.ItemResponse;
 import com.thoughtworks.springbootemployee.entity.Item;
 import com.thoughtworks.springbootemployee.service.serviceImpl.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class ItemController {
 
 
     @GetMapping
-    private List<Item> getItem() {
+    private List<ItemResponse> getItem() {
         return itemService.getItems();
     }
 

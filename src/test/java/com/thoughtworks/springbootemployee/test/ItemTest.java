@@ -100,10 +100,10 @@ public class ItemTest {
         itemRepository.save(item2);
 
         //when
-        List<Item> itemsResult = itemService.getItems();
+        List<ItemResponse> itemResponses = itemService.getItems();
 
         //then
-        assertEquals(2, itemsResult.size());
+        assertEquals(2, itemResponses.size());
     }
 
 }
