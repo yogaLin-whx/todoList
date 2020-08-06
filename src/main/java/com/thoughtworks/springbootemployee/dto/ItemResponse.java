@@ -2,15 +2,15 @@ package com.thoughtworks.springbootemployee.dto;
 
 public class ItemResponse {
 
-    private String name;
+    private String content;
     private boolean status;
 
-    public String getName() {
-        return name;
+    public String getContent() {
+        return content;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public boolean isStatus() {

@@ -69,7 +69,7 @@ public class ItemTest {
         ItemResponse itemResponse = itemService.findById(item.getId());
 
         //then
-        assertEquals(item.getContent(), itemResponse.getName());
+        assertEquals(item.getContent(), itemResponse.getContent());
         assertEquals(item.isStatus(), itemResponse.isStatus());
     }
 
