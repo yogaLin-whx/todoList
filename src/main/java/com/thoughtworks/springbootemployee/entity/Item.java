@@ -1,7 +1,13 @@
 package com.thoughtworks.springbootemployee.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="item")
 public class Item {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String content;
     private boolean  status;
