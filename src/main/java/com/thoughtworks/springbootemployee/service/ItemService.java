@@ -2,7 +2,6 @@ package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.dto.ItemRequest;
 import com.thoughtworks.springbootemployee.dto.ItemResponse;
-import com.thoughtworks.springbootemployee.entity.Item;
 
 import java.util.List;
 
@@ -14,9 +13,9 @@ public interface ItemService {
 
     ItemResponse findById(int id);
 
-    ItemResponse updateById(int id, ItemRequest itemRequest);
+    ItemResponse updateById(int id, ItemRequest IitemRequest);
 
     List<ItemResponse> getItems();
 
-    void addItem(Item item);
+    void addItem(ItemRequest itemRequest);
 }
