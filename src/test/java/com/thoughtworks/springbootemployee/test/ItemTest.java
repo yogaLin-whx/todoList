@@ -8,25 +8,25 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class ItemTest {
 
     @Autowired
-    ItemRepository  itemRepository;
+    ItemRepository itemRepository;
 
     @Autowired
     ItemServiceImpl itemService;
 
     @BeforeEach
-    void clearRepository(){
+    void clearRepository() {
         itemRepository.deleteAll();
     }
 
+
     @Test
-    void  should_return_item_with_id_when_add_item_list_given_item(){
+    void should_return_item_with_id_when_add_item_list_given_item() {
         //given
         Item item = new Item();
         item.setContent("This is a test");
@@ -40,7 +40,7 @@ public class ItemTest {
     }
 
     @Test
-    void  should_return_null_when_delete_item_list_given_exist_item(){
+    void should_return_null_when_delete_item_list_given_exist_item() {
         //given
         Item item = new Item();
         item = itemRepository.save(item);
@@ -52,4 +52,18 @@ public class ItemTest {
         //then
         assertNull(existItem);
     }
+
+    @Test
+    void should_return_item_with_same_id_when_find_item_by_id_given_exist_item_with_id() {
+        //given
+        Item item = new Item();
+        item = itemRepository.save(item);
+
+        //when
+        Item existItem = itemService.findById(item.getId());
+
+        //then
+        assertEquals(item.getId(), existItem.getId());
+    }
+
 }

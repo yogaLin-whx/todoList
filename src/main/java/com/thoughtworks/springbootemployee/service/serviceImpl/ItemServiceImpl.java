@@ -19,4 +19,9 @@ public class ItemServiceImpl implements ItemService {
     public void deleteById(int id) {
         itemRepository.deleteById(id);
     }
+
+    @Override
+    public Item findById(int id) {
+        return itemRepository.findById(id).orElse(null);
+    }
 }
