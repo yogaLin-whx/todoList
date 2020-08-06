@@ -10,6 +10,6 @@ public class ItemServiceImpl {
     ItemRepository  itemRepository;
 
     public Item save(Item item) {
-        return  null;
+        return  itemRepository.save(item);
     }
 }
