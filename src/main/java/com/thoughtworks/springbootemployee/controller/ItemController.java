@@ -23,18 +23,23 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    private ItemResponse getItemById(@PathVariable int id){
+    private ItemResponse getItemById(@PathVariable int id) {
         return itemService.findById(id);
     }
 
     @PostMapping
-    private void addItem(@RequestBody ItemRequest itemRequest){
+    private void addItem(@RequestBody ItemRequest itemRequest) {
         itemService.addItem(itemRequest);
     }
 
     @DeleteMapping("/{id}")
-    private void  deleteItemById(@PathVariable int id){
+    private void deleteItemById(@PathVariable int id) {
         itemService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    private ItemResponse updateItemById(@PathVariable int id, @RequestBody ItemRequest itemRequest) {
+        return itemService.updateById(id, itemRequest);
     }
 
 }
