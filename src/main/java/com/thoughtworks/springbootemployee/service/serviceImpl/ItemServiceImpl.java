@@ -32,13 +32,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ItemResponse updateById(int id, ItemRequest itemRequest) {
-        Item item = new Item();
-        ItemResponse itemResponse = new ItemResponse();
+    public void updateById(int id, ItemRequest itemRequest) {
+        Item item = itemRepository.findById(id).orElse(null);
         BeanUtils.copyProperties(itemRequest, item);
-        item = itemRepository.save(item);
-        BeanUtils.copyProperties(item, itemResponse);
-        return itemResponse;
+        itemRepository.save(item);
     }
 
     @Override

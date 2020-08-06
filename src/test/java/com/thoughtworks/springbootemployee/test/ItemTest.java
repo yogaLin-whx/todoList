@@ -84,11 +84,11 @@ public class ItemTest {
         BeanUtils.copyProperties(item, itemRequest);
 
         //when
-        ItemResponse itemResponse = itemService.updateById(item.getId(), itemRequest);
+        itemService.updateById(item.getId(), itemRequest);
+        Item itemResult  =  itemRepository.findById(item.getId()).orElse(null);
 
         //then
-        assertEquals(item.getContent(), itemResponse.getContent());
-        assertEquals(item.isStatus(), itemResponse.isStatus());
+        assertEquals(item.getContent(), itemResult.getContent());
     }
 
     @Test

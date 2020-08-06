@@ -38,8 +38,8 @@ public class ItemController {
     }
 
     @PutMapping("/{id}")
-    private ItemResponse updateItemById(@PathVariable int id, @RequestBody ItemRequest itemRequest) {
-        return itemService.updateById(id, itemRequest);
+    private void updateItemById(@PathVariable int id, @RequestBody ItemRequest itemRequest) {
+        itemService.updateById(id, itemRequest);
     }
 
 }
