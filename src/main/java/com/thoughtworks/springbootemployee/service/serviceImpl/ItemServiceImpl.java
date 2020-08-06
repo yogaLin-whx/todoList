@@ -55,8 +55,8 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemResponse> getItems() {
         List<Item> items = itemRepository.findAll();
         return items.stream().map(item -> {
-            ItemResponse  itemResponse = new ItemResponse();
-            BeanUtils.copyProperties(item,itemResponse);
+            ItemResponse itemResponse = new ItemResponse();
+            BeanUtils.copyProperties(item, itemResponse);
             return itemResponse;
         }).collect(Collectors.toList());
     }

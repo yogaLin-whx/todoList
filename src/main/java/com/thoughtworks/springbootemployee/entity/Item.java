@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="item")
+@Table(name = "item")
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String content;
-    private boolean  status;
+    private boolean status;
 
     public int getId() {
         return id;
