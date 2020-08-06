@@ -66,4 +66,19 @@ public class ItemTest {
         assertEquals(item.getId(), existItem.getId());
     }
 
+    @Test
+    void should_return_update_item_when_update_item_given_exist_item_with_update_value() {
+        //given
+        Item item = new Item();
+        item.setContent("This is a test");
+        item = itemRepository.save(item);
+        item.setContent("update");
+
+        //when
+        Item itemResult = itemService.updateById(item.getId(), item);
+
+        //then
+        assertEquals(item, itemResult);
+    }
+
 }

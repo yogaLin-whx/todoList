@@ -4,9 +4,11 @@ import com.thoughtworks.springbootemployee.entity.Item;
 
 public interface ItemService {
 
-     Item save(Item item);
+    Item save(Item item);
 
-     void deleteById(int id);
+    void deleteById(int id);
 
-     Item findById(int id);
+    Item findById(int id);
+
+    Item updateById(int id, Item item);
 }

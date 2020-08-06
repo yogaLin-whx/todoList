@@ -12,10 +12,12 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemRepository  itemRepository;
 
+    @Override
     public Item save(Item item) {
         return  itemRepository.save(item);
     }
 
+    @Override
     public void deleteById(int id) {
         itemRepository.deleteById(id);
     }
@@ -23,5 +25,10 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item findById(int id) {
         return itemRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public  Item updateById(int id,Item item){
+        return itemRepository.save(item);
     }
 }
