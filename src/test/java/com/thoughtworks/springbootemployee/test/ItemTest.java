@@ -39,7 +39,7 @@ public class ItemTest {
         BeanUtils.copyProperties(item, itemRequest);
 
         //when
-        itemService.save(itemRequest);
+        itemService.addItem(itemRequest);
 
         //then
         assertEquals(1, itemRepository.findAll().size());

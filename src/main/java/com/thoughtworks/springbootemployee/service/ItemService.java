@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface ItemService {
 
-    ItemResponse save(ItemRequest item);
-
     void deleteById(int id);
 
     ItemResponse findById(int id);

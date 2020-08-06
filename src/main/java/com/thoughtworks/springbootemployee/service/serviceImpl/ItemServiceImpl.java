@@ -19,16 +19,6 @@ public class ItemServiceImpl implements ItemService {
     ItemRepository itemRepository;
 
     @Override
-    public ItemResponse save(ItemRequest itemRequest) {
-        Item item = new Item();
-        BeanUtils.copyProperties(itemRequest, item);
-        item = itemRepository.save(item);
-        ItemResponse itemResponse = new ItemResponse();
-        BeanUtils.copyProperties(item, itemResponse);
-        return itemResponse;
-    }
-
-    @Override
     public void deleteById(int id) {
         itemRepository.deleteById(id);
     }
