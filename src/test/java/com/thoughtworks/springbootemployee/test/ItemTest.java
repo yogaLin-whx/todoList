@@ -1,10 +1,12 @@
 package com.thoughtworks.springbootemployee.test;
 
+import com.thoughtworks.springbootemployee.dto.ItemRequest;
 import com.thoughtworks.springbootemployee.entity.Item;
 import com.thoughtworks.springbootemployee.repository.ItemRepository;
 import com.thoughtworks.springbootemployee.service.serviceImpl.ItemServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -32,11 +34,11 @@ public class ItemTest {
     void should_return_item_with_id_when_add_item_list_given_item() {
         //given
         Item item = new Item();
-        item.setContent("This is a test");
-        item.setStatus(false);
+        ItemRequest  itemRequest =  new ItemRequest();
+        BeanUtils.copyProperties(item,itemRequest);
 
         //when
-        itemService.save(item);
+        itemService.save(itemRequest);
 
         //then
         assertEquals(1, itemRepository.findAll().size());

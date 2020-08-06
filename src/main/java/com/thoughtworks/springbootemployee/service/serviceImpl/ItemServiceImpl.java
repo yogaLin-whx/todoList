@@ -1,8 +1,11 @@
 package com.thoughtworks.springbootemployee.service.serviceImpl;
 
+import com.thoughtworks.springbootemployee.dto.ItemRequest;
+import com.thoughtworks.springbootemployee.dto.ItemResponse;
 import com.thoughtworks.springbootemployee.entity.Item;
 import com.thoughtworks.springbootemployee.repository.ItemRepository;
 import com.thoughtworks.springbootemployee.service.ItemService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +15,16 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
-    ItemRepository  itemRepository;
+    ItemRepository itemRepository;
 
     @Override
-    public Item save(Item item) {
-        return  itemRepository.save(item);
+    public ItemResponse save(ItemRequest itemRequest) {
+        Item item = new Item();
+        BeanUtils.copyProperties(itemRequest, item);
+        item = itemRepository.save(item);
+        ItemResponse itemResponse = new ItemResponse();
+        BeanUtils.copyProperties(item, itemResponse);
+        return itemResponse;
     }
 
     @Override
@@ -30,7 +38,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public  Item updateById(int id,Item item){
+    public Item updateById(int id, Item item) {
         return itemRepository.save(item);
     }
 

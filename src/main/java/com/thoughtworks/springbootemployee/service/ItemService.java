@@ -1,12 +1,14 @@
 package com.thoughtworks.springbootemployee.service;
 
+import com.thoughtworks.springbootemployee.dto.ItemRequest;
+import com.thoughtworks.springbootemployee.dto.ItemResponse;
 import com.thoughtworks.springbootemployee.entity.Item;
 
 import java.util.List;
 
 public interface ItemService {
 
-    Item save(Item item);
+    ItemResponse save(ItemRequest item);
 
     void deleteById(int id);
 
