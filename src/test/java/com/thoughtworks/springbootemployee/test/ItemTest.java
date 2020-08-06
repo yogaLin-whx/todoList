@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class ItemTest {
@@ -33,10 +36,10 @@ public class ItemTest {
         item.setStatus(false);
 
         //when
-        Item itemResult = itemService.save(item);
+        itemService.save(item);
 
         //then
-        assertNotNull(itemResult);
+        assertEquals(1, itemRepository.findAll().size());
     }
 
     @Test
@@ -79,6 +82,21 @@ public class ItemTest {
 
         //then
         assertEquals(item, itemResult);
+    }
+
+    @Test
+    void should_return_2item_when_get_all_items() {
+        //given
+        Item item1 = new Item();
+        Item item2 = new Item();
+        itemRepository.save(item1);
+        itemRepository.save(item2);
+
+        //when
+        List<Item> itemsResult = itemService.getItems();
+
+        //then
+        assertEquals(2, itemsResult.size());
     }
 
 }
