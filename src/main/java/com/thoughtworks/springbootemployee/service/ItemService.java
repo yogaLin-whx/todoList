@@ -12,7 +12,7 @@ public interface ItemService {
 
     void deleteById(int id);
 
-    Item findById(int id);
+    ItemResponse findById(int id);
 
     Item updateById(int id, Item item);
 

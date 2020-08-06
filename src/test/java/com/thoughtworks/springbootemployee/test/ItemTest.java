@@ -1,6 +1,7 @@
 package com.thoughtworks.springbootemployee.test;
 
 import com.thoughtworks.springbootemployee.dto.ItemRequest;
+import com.thoughtworks.springbootemployee.dto.ItemResponse;
 import com.thoughtworks.springbootemployee.entity.Item;
 import com.thoughtworks.springbootemployee.repository.ItemRepository;
 import com.thoughtworks.springbootemployee.service.serviceImpl.ItemServiceImpl;
@@ -34,8 +35,8 @@ public class ItemTest {
     void should_return_item_with_id_when_add_item_list_given_item() {
         //given
         Item item = new Item();
-        ItemRequest  itemRequest =  new ItemRequest();
-        BeanUtils.copyProperties(item,itemRequest);
+        ItemRequest itemRequest = new ItemRequest();
+        BeanUtils.copyProperties(item, itemRequest);
 
         //when
         itemService.save(itemRequest);
@@ -65,10 +66,11 @@ public class ItemTest {
         item = itemRepository.save(item);
 
         //when
-        Item existItem = itemService.findById(item.getId());
+        ItemResponse itemResponse = itemService.findById(item.getId());
 
         //then
-        assertEquals(item.getId(), existItem.getId());
+        assertEquals(item.getContent(), itemResponse.getName());
+        assertEquals(item.isStatus(), itemResponse.isStatus());
     }
 
     @Test
