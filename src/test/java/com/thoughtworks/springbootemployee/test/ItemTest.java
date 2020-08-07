@@ -77,9 +77,9 @@ public class ItemTest {
     void should_return_update_item_when_update_item_given_exist_item_with_update_value() {
         //given
         Item item = new Item();
-        item.setContent("This is a test");
+        item.setStatus(false);
         item = itemRepository.save(item);
-        item.setContent("update");
+        item.setStatus(true);
         ItemRequest itemRequest = new ItemRequest();
         BeanUtils.copyProperties(item, itemRequest);
 
@@ -100,7 +100,7 @@ public class ItemTest {
         itemRepository.save(item2);
 
         //when
-        List<ItemResponse> itemResponses = itemService.getItems();
+        List<Item> itemResponses = itemService.getItems();
 
         //then
         assertEquals(2, itemResponses.size());
