@@ -51,9 +51,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void addItem(ItemRequest itemRequest) {
+    public Item addItem(ItemRequest itemRequest) {
         Item item = new Item();
         BeanUtils.copyProperties(itemRequest,item);
-        itemRepository.save(item);
+       return itemRepository.save(item);
     }
 }

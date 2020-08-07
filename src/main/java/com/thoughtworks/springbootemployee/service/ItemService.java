@@ -16,5 +16,5 @@ public interface ItemService {
 
     List<Item> getItems();
 
-    void addItem(ItemRequest itemRequest);
+    Item addItem(ItemRequest itemRequest);
 }

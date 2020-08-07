@@ -29,8 +29,8 @@ public class ItemController {
     }
 
     @PostMapping
-    private void addItem(@RequestBody ItemRequest itemRequest) {
-        itemService.addItem(itemRequest);
+    private Item addItem(@RequestBody ItemRequest itemRequest) {
+       return itemService.addItem(itemRequest);
     }
 
     @DeleteMapping("/{id}")
